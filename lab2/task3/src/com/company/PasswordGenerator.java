@@ -4,42 +4,52 @@ import java.util.Random;
 
 public class PasswordGenerator {
     private final static int NUMBER_OF_ARGUMENTS = 2;
+    private static final String INCORRECT_DATA = "Wrong arguments";
 
-    private String availableCharacters;
-    private int lengthOfPassword;
+    private String _availableCharacters;
+    private int _lengthOfPassword;
 
     public PasswordGenerator(String[] arguments) {
-        checkNumberOfArguments(arguments.length);
-        int length = Integer.parseInt(arguments[0]);
-        checkPasswordLength(length);
-        checkPasswordAvailableCharacters(arguments[1]);
-        lengthOfPassword = length;
-        availableCharacters = arguments[1];
+        try {
+            checkNumberOfArguments(arguments.length);
+            setPasswordLengthFromString(arguments[0]);
+            checkPasswordAvailableCharacters(arguments[1]);
+            _availableCharacters = arguments[1];
+        } catch (Exception er) {
+            System.out.println(INCORRECT_DATA);
+        }
     }
 
-    private void checkNumberOfArguments(int number) {
+    private void checkNumberOfArguments(int number) throws IllegalArgumentException {
         if (number != NUMBER_OF_ARGUMENTS) {
             throw new IllegalArgumentException("Wrong arguments");
         }
     }
 
-    private void checkPasswordLength(int length) {
-        if (length <= 0) {
-            throw new IllegalArgumentException("Wrong arguments");
+    private void setPasswordLengthFromString(String lengthString) throws IllegalArgumentException {
+        try {
+            int length = Integer.parseInt(lengthString);
+            if (length <= 0) {
+                throw new IllegalArgumentException();
+            }
+
+            _lengthOfPassword = length;
+        } catch (Exception er) {
+            throw new IllegalArgumentException();
         }
     }
 
-    private void checkPasswordAvailableCharacters(String symbols) {
+    private void checkPasswordAvailableCharacters(String symbols) throws IllegalArgumentException{
         if (symbols.isEmpty()) {
             throw new IllegalArgumentException("Wrong arguments");
         }
     }
 
-    public String generateNewPassword() {
+    public String generateNewPassword() throws IllegalArgumentException {
         String password = "";
-        Random random = new Random(System.currentTimeMillis());
-        for(int i = 0; i < lengthOfPassword; ++i) {
-            password += availableCharacters.charAt(random.nextInt(availableCharacters.length()));
+        Random random = new Random(System.currentTimeMillis() * _availableCharacters.length());
+        for(int i = 0; i < _lengthOfPassword; ++i) {
+            password += _availableCharacters.charAt(random.nextInt(_availableCharacters.length()));
         }
 
         return password;
