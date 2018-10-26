@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="615e26b6-efdb-4ed7-acf7-96d417ae6679" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Course Java английский1/.idea/Course_Java_английский1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Course Java английский2/.idea/Course_Java_английский2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -9,12 +12,11 @@
       <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task3/src/PasswordGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task3/src/PasswordGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task3/src/PasswordHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task3/src/PasswordHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task4/src/TypesTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task4/src/TypesTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/PasswordGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/PasswordGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../task4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../task4/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../task4/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task5/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task5/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task5/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../task5/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task5/src/com/company/TopWordsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../task5/src/com/company/TopWordsHandler.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,10 +29,12 @@
     <session id="-526430331">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="5" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -60,7 +64,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state>
               <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
             </state>
           </provider>
@@ -69,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/PasswordGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="202">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
@@ -101,10 +105,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="860" />
-    <option name="y" value="11" />
-    <option name="width" value="980" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="541" />
+    <option name="y" value="-20" />
+    <option name="width" value="785" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -114,6 +118,9 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -136,9 +143,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Course" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -188,18 +192,19 @@
       <updated>1540134180189</updated>
       <workItem from="1540134186426" duration="4241000" />
       <workItem from="1540497771696" duration="617000" />
-      <workItem from="1540501560223" duration="159000" />
+      <workItem from="1540501560223" duration="1469000" />
+      <workItem from="1540572559912" duration="369000" />
+      <workItem from="1540586752325" duration="774000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5017000" />
+    <option name="totallyTimeSpent" value="7470000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="688" y="9" width="784" height="832" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1328859" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -208,7 +213,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32907802" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32904148" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -267,15 +272,15 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state>
           <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/PasswordGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="202">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>
