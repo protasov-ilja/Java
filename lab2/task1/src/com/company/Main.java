@@ -6,14 +6,9 @@ public class Main {
     private static final String HELP_INFO = "please write <ip address> and <subnet mask> in this format: x.x.x.x where x is number in range [0 .. 255]";
 
     public static void main(String[] args) {
-        try {
-            AddressInfo addressInfo = new AddressInfo(args);
-            int[] netAddress = getNetAddress(addressInfo.getIpAddressInBytes(), addressInfo.getSubnetMaskInBytes());
-            printNetAddress(netAddress);
-        } catch (Exception er) {
-            System.out.println(er.getMessage());
-            System.out.println(HELP_INFO);
-        }
+        AddressInfo addressInfo = new AddressInfo(args);
+        int[] netAddress = getNetAddress(addressInfo.getIpAddressInBytes(), addressInfo.getSubnetMaskInBytes());
+        printNetAddress(netAddress);
     }
 
     private static int[] getNetAddress(ArrayList<Byte> ipAddress, ArrayList<Byte> subnetMask) {

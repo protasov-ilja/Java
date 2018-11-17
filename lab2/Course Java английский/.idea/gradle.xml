@@ -9,12 +9,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/JAVA.Introduction/lab1/Linux" />
-            <option value="$PROJECT_DIR$/JAVA.Introduction/lec1/Theory" />
             <option value="$PROJECT_DIR$/Java.OOP/lab2/task1" />
             <option value="$PROJECT_DIR$/Java.OOP/lab2/task2" />
             <option value="$PROJECT_DIR$/Java.OOP/lab2/task3" />
             <option value="$PROJECT_DIR$/Java.OOP/lab2/task4" />
-            <option value="$PROJECT_DIR$/Java.OOP/lec2/Theory" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>

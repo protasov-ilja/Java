@@ -42,26 +42,22 @@ public class TopWordsHandler {
     }
 
     private void FindTopWords(FileReader inputFile) throws IOException {
-    	try {
-	        int ch;
-	        String word = "";
-	        while((ch = inputFile.read()) != -1) {
-	            if (Character.isLetter(ch)) {
-	                word += (char)ch;
-	            } else if (!word.equals("")) {
-	                int newCount = setWordsCounts(word);
-	                setWordInList(word, newCount);
-	                word = "";
-	            }
-	        }
+		    int ch;
+		    String word = "";
+		    while((ch = inputFile.read()) != -1) {
+		        if (Character.isLetter(ch)) {
+		            word += (char)ch;
+		        } else if (!word.equals("")) {
+		            int newCount = setWordsCounts(word);
+		            setWordInList(word, newCount);
+		            word = "";
+		        }
+		    }
 
 		    if (!word.equals("")) {
-			    int newCount = setWordsCounts(word);
-			    setWordInList(word, newCount);
+		        int newCount = setWordsCounts(word);
+		        setWordInList(word, newCount);
 		    }
-        } finally {
-    		inputFile.close();
-		}
     }
 
     private int setWordsCounts(String word) {
@@ -99,15 +95,15 @@ public class TopWordsHandler {
     public void showTopWords() {
         int topWordsCounter = 0;
         for (int i = _listOfWords.size() - 1; i >= 0; --i) {
-        	Iterator<String> iterator = _listOfWords.get(i).iterator();
-        	while (iterator.hasNext() && (topWordsCounter < _amountOfTopWords)) {
-        		System.out.println(iterator.next() + " " + String.valueOf(i + 1));
-        		topWordsCounter++;
+		        Iterator<String> iterator = _listOfWords.get(i).iterator();
+		        while (iterator.hasNext() && (topWordsCounter < _amountOfTopWords)) {
+			          System.out.println(iterator.next() + " " + String.valueOf(i + 1));
+			          topWordsCounter++;
 
-        		if (topWordsCounter ==_amountOfTopWords) {
-        			return;
-        		}
-        	}
+			          if (topWordsCounter ==_amountOfTopWords) {
+			              return;
+			          }
+		        }
         }
     }
 }

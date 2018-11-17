@@ -2,18 +2,91 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06de543d-3324-4fbc-ba92-dc993f66a346" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileContent/fileContent.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task3/src/PasswordHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task3/src/PasswordHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileContent/annotation-processors.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileContent/fileContent.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/taskHistory/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/4.8/taskHistory/taskHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.gradle/vcsWorkingDirs/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/Course_Java_английский.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/libraries/Gradle__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/JAVA.Introduction/lab1/Linux/JAVA.Introduction-lab1-Linux.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/JAVA.Introduction/lab1/Linux/JAVA.Introduction-lab1-Linux_main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/JAVA.Introduction/lab1/Linux/JAVA.Introduction-lab1-Linux_test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/JAVA.Introduction/lec1/Theory/JAVA.Introduction-lec1-Theory.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/JAVA.Introduction/lec1/Theory/JAVA.Introduction-lec1-Theory_main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/JAVA.Introduction/lec1/Theory/JAVA.Introduction-lec1-Theory_test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lab2/task1/Java.OOP-lab2-task1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lab2/task1/Java.OOP-lab2-task1_main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lab2/task1/Java.OOP-lab2-task1_test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lab2/task2/Java.OOP-lab2-task2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lab2/task2/Java.OOP-lab2-task2_main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lab2/task2/Java.OOP-lab2-task2_test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lab2/task3/Java.OOP-lab2-task3.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lab2/task3/Java.OOP-lab2-task3_main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lab2/task3/Java.OOP-lab2-task3_test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lab2/task4/Java.OOP-lab2-task4.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lab2/task4/Java.OOP-lab2-task4_main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lab2/task4/Java.OOP-lab2-task4_test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lec2/Theory/Java.OOP-lec2-Theory.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lec2/Theory/Java.OOP-lec2-Theory_main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/Java.OOP/lec2/Theory/Java.OOP-lec2-Theory_test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/util/util.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/util/util_main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/modules/util/util_test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/study_project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/JAVA.Introduction/lab1/Linux/src/Task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/JAVA.Introduction/lec1/Theory/src/Task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task1/src/GetNetAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task1/test/BaseIOValidationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task1/test/GetNetAddressTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task2/build/reports/tests/test/classes/CaesarCipherTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task2/build/reports/tests/test/css/base-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task2/build/reports/tests/test/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task2/build/reports/tests/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task2/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task2/build/reports/tests/test/packages/default-package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task2/build/test-results/test/TEST-CaesarCipherTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task2/build/test-results/test/binary/output.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task2/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task2/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task2/src/CaesarCipher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task2/src/CaesarCipherHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task2/test/BaseIOValidationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task2/test/CaesarCipherTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task3/build/test-results/test/binary/output.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task3/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task3/src/PasswordGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task3/src/PasswordHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task3/test/BaseIOValidationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task3/test/PasswordGeneratorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task4/build/test-results/test/binary/output.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task4/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task4/src/TypesTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task4/test/BaseIOValidationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lab2/task4/test/TypesTableTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/Java.OOP/lec2/Theory/src/Task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Course Java английский/settings.gradle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../task3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task3/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/TopWordsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/TopWordsHandler.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -27,23 +100,24 @@
     <session id="-919457339">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
-          <entry key="project.open.time.0" value="2" />
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.40" value="1" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2497" />
+          <entry key="java" value="2634" />
           <entry key="txt" value="271" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2497" />
+          <entry key="JAVA" value="2634" />
           <entry key="PLAIN_TEXT" value="271" />
         </counts>
       </usages-collector>
@@ -63,20 +137,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="32" lean-forward="true" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+            <state relative-caret-position="170">
+              <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/TopWordsHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-646">
-              <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+            <state relative-caret-position="17">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,8 +161,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/words.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state>
+              <caret column="10" selection-start-column="10" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -109,8 +183,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/words.txt" />
-        <option value="$PROJECT_DIR$/src/com/company/TopWordsHandler.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/company/TopWordsHandler.java" />
       </list>
     </option>
   </component>
@@ -284,6 +358,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -306,9 +383,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="Course" />
     </panes>
   </component>
@@ -316,7 +390,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540586726244" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../task3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Cpp/QualityControl/lab5" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RunDashboard">
@@ -335,7 +409,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.company.Main" />
       <module name="task5" />
-      <option name="PROGRAM_PARAMETERS" value="words.txt 1" />
+      <option name="PROGRAM_PARAMETERS" value="words.txt 100" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
@@ -363,23 +437,24 @@
       <workItem from="1540496253172" duration="36000" />
       <workItem from="1540498396800" duration="640000" />
       <workItem from="1540572932178" duration="12759000" />
+      <workItem from="1540639986160" duration="1064000" />
+      <workItem from="1540712276178" duration="782000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16062000" />
+    <option name="totallyTimeSpent" value="17908000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15637584" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16040269" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.32907802" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32907802" />
@@ -391,6 +466,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32907802" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32907802" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -409,27 +485,27 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/words.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state>
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/TopWordsHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-646">
-          <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="32" lean-forward="true" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
         </state>
       </provider>
     </entry>

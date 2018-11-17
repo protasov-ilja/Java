@@ -1,12 +1,21 @@
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.security.Permission;
 
 public abstract class BaseIOValidationTest {
   protected ByteArrayOutputStream output = new ByteArrayOutputStream();
   private final PrintStream old = System.out;
+
+  @BeforeClass
+  public static void init() {
+    //Before running the external Command
+    MySecurityManager secManager = new MySecurityManager();
+    System.setSecurityManager(secManager);
+  }
 
   @Before
   public void setUp() {
@@ -53,6 +62,18 @@ public abstract class BaseIOValidationTest {
               input,
               details
       );
+    }
+  }
+
+  static class MySecurityManager extends SecurityManager {
+    @Override
+    public void checkExit(int status) {
+      throw new SecurityException();
+    }
+
+    @Override
+    public void checkPermission(Permission perm) {
+      // Allow other activities by default
     }
   }
 

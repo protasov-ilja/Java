@@ -16,36 +16,48 @@ public final class AddressInfo {
             checkNumberOfArguments(args.length);
             ipAddress = convertArgumentInIntArray(args[0]);
             subnetMask = convertArgumentInIntArray(args[1]);
-        } catch (IllegalArgumentException argumentEx) {
-            System.out.println(argumentEx.getMessage());
+            if (!isSubnetMask(subnetMask)) {
+                throw new IllegalArgumentException("Wrong mask");
+            }
+        } catch (IllegalArgumentException er) {
+            System.out.println(er.getMessage());
         }
     }
 
     private void checkNumberOfArguments(int numberOfArguments) {
         if (numberOfArguments != NUMBER_OF_ARGUMENTS) {
-            throw new IllegalArgumentException("input string mast have " + NUMBER_OF_ARGUMENTS + " arguments");
+            throw new IllegalArgumentException("GetNetAddress <IP address> <Subnet mask>");
         }
     }
 
     private int[] convertArgumentInIntArray(String str) {
-        String[] partsOfAddress = str.split("[.]");
-        if (partsOfAddress.length != NUMBER_OF_ADDRESS_PARAMETERS) {
-            throw new IllegalArgumentException("argument " + str + "must have " + NUMBER_OF_ADDRESS_PARAMETERS + " parameters");
-        }
-
-        int[] resultArray = new int[NUMBER_OF_ADDRESS_PARAMETERS];
-        for (int i = 0; i < partsOfAddress.length; ++i) {
-            int number = Integer.parseInt(partsOfAddress[i]);
-            if ((number <= MAX_VALID_NUMBER) && (number >= MIN_VALID_NUMBER)) {
-                resultArray[i] = number;
+        try {
+            if (str.isEmpty()) {
+                throw new IllegalArgumentException("Wrong ip address");
             }
-            else
-            {
-                throw new IllegalArgumentException("parts of address must be less than 256 and more than -1");
-            }
-        }
 
-        return resultArray;
+            String[] partsOfAddress = str.split("\\.");
+            System.out.println(partsOfAddress.length);
+            if (partsOfAddress.length != NUMBER_OF_ADDRESS_PARAMETERS) {
+                throw new IllegalArgumentException("Wrong ip address");
+            }
+
+            int[] resultArray = new int[partsOfAddress.length];
+            for (int i = 0; i < partsOfAddress.length; ++i) {
+                int number = Integer.valueOf(partsOfAddress[i]);
+                if ((number <= MAX_VALID_NUMBER) && (number >= MIN_VALID_NUMBER) && (partsOfAddress[i].charAt(0) != '-')) {
+                    resultArray[i] = number;
+                }
+                else
+                {
+                    throw new IllegalArgumentException("Wrong ip address");
+                }
+            }
+
+            return resultArray;
+        } catch (Exception er) {
+            throw new IllegalArgumentException("Wrong ip address");
+        }
     }
 
     public ArrayList<Byte> getIpAddressInBytes() {
@@ -66,5 +78,25 @@ public final class AddressInfo {
         }
 
         return ipAddressInBytes;
+    }
+
+    private boolean isSubnetMask(int[] maskArray) {
+        int mask = 128;
+        for(int number : maskArray) {
+            int currNumber = number;
+            for (int i = 0; i < 8; i++) {
+                if ((currNumber & 128) != 0 && mask == 0) {
+                    return false;
+                }
+
+                if ((currNumber & mask) != mask) {
+                    mask = 0;
+                }
+
+                currNumber <<=  1;
+            }
+        }
+
+        return true;
     }
 }
