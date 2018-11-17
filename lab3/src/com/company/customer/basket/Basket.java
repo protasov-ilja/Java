@@ -3,9 +3,10 @@ package com.company.customer.basket;
 import com.company.product.Product;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Basket {
-	private ArrayList<Product> _products = new ArrayList<Product>();
+	private List<Product> _products = new ArrayList<>();
 
 	public void AddProduct() {
 

@@ -5,25 +5,28 @@ import com.company.product.enums.ProductMeasuringType;
 import com.company.product.enums.ProductType;
 import com.company.supermarket.cashdesk.CashDesk;
 import com.company.supermarket.report.Report;
+import com.company.supermarket.timer.Time;
 
-import java.sql.Time;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Supermarket {
-	private ArrayList<Product> _listOfProducts;
+	private List<Product> _listOfProducts;
 	private CashDesk _cashDesk;
 	private Report _report;
 	private int _maxNumberOfProducts = 20;
 	private int _minNumberOfProducts = 10;
 	private int _productsNumber;
-	private ArrayList<Product> _listOfSoldProducts = new ArrayList<>();
-	private float _currTime;
-	private float _startWorkingTime;
-	private float _endWorkingTime;
+	private List<Product> _listOfSoldProducts = new ArrayList<>();
+	private Time _currTime;
+	private Time _startWorkingTime;
+	private Time _endWorkingTime;
 
 	public Supermarket() {
 		GenerateListOfProducts();
+		_currTime = new Time("23:00:23");
+		System.out.println(_currTime.getInfo());
 	}
 
 	private void GenerateListOfProducts() {
