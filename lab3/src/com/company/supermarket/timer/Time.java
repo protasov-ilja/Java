@@ -3,26 +3,27 @@ package com.company.supermarket.timer;
 public class Time {
 	private int _hours;
 	private int _minutes;
-	private int _seconds;
 
-	public Time(int hours, int minutes, int seconds) {
+	public Time(int hours, int minutes) {
 		_hours = hours;
 		_minutes = minutes;
-		_seconds = seconds;
 	}
 
 	public Time(String timeString) {
 		String[] strArr = timeString.split(":");
-		if (strArr.length == 3) {
-			_hours = getNumberFormString(strArr[0], true);
-			_minutes = getNumberFormString(strArr[1], false);
-			_seconds = getNumberFormString(strArr[2], false);
+		if (strArr.length == 2) {
+			_hours = getNumberFromString(strArr[0], true);
+			_minutes = getNumberFromString(strArr[1], false);
 		} else {
 			throw new IllegalArgumentException();
 		}
 	}
 
-	private int getNumberFormString(String str, boolean isHours) throws IllegalArgumentException {
+	public boolean equals(Time time) {
+		return (time._hours == _hours) && (time._minutes == _minutes);
+	}
+
+	private int getNumberFromString(String str, boolean isHours) throws IllegalArgumentException {
 		int number = Integer.parseInt(str);
 		if (((number < 0) || (number > 60)) || ((isHours) && (number > 23))) {
 			throw new IllegalArgumentException();
@@ -39,8 +40,12 @@ public class Time {
 		return _minutes;
 	}
 
-	public int getSeconds() {
-		return _seconds;
+	public void setHours(int hours) {
+		_hours = hours;
+	}
+
+	public void setMinutes(int minutes) {
+		_minutes = minutes;
 	}
 
 	private String convertNumberToString(int value) {
@@ -55,7 +60,6 @@ public class Time {
 	}
 
 	public String getInfo() {
-		return convertNumberToString(getHours()) + ":" + convertNumberToString(getMinutes()) + ":"
-				+ convertNumberToString(getSeconds());
+		return convertNumberToString(getHours()) + ":" + convertNumberToString(getMinutes());
 	}
 }

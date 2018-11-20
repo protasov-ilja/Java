@@ -1,67 +1,73 @@
 package com.company.supermarket;
 
+import com.company.customer.Customer;
+import com.company.customer.enums.StatesInSupermarket;
 import com.company.product.Product;
 import com.company.product.enums.ProductMeasuringType;
 import com.company.product.enums.ProductType;
 import com.company.supermarket.cashdesk.CashDesk;
+import com.company.supermarket.model.CustomerGenerator;
+import com.company.supermarket.model.ProductProcessor;
+import com.company.supermarket.model.ProductsGenerator;
 import com.company.supermarket.report.Report;
-import com.company.supermarket.timer.Time;
+import com.company.supermarket.timer.Timer;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Supermarket {
-	private List<Product> _listOfProducts;
 	private CashDesk _cashDesk;
 	private Report _report;
-	private int _maxNumberOfProducts = 20;
-	private int _minNumberOfProducts = 10;
-	private int _productsNumber;
-	private List<Product> _listOfSoldProducts = new ArrayList<>();
-	private Time _currTime;
-	private Time _startWorkingTime;
-	private Time _endWorkingTime;
+	private Timer _timer;
+	private ProductProcessor _productProcessor;
+	private CustomerGenerator _customerGenerator = new CustomerGenerator();
+	private List<Customer> _customers = new ArrayList<>();
+	private Random _random = new Random();
 
-	public Supermarket() {
-		GenerateListOfProducts();
-		_currTime = new Time("23:00:23");
-		System.out.println(_currTime.getInfo());
+	public Supermarket(String startTime, String endTime) {
+		ProductsGenerator productsGenerator = new ProductsGenerator(10, 20);
+		List<Product> products = productsGenerator.getListOfProducts();
+		_productProcessor = new ProductProcessor(products);
+		_timer = new Timer(startTime, endTime);
+		System.out.println(_timer.getCurrTimeToString());
 	}
 
-	private void GenerateListOfProducts() {
-		Random rand = new Random();
-		_productsNumber = rand.nextInt((_maxNumberOfProducts - _minNumberOfProducts) + 1) + _minNumberOfProducts;
-		System.out.println(_productsNumber);
-		_listOfProducts = new ArrayList<>();
-		for (int i = 0; i < _productsNumber; ++i) {
-			_listOfProducts.add(GenerateRandomProduct(i));
-			System.out.println(_listOfProducts.get(i).getInfoByString());
-		}
-
-		System.out.println(_listOfProducts.size());
-	}
-
-	private Product GenerateRandomProduct(int index) {
-		Random rand = new Random();
-		ProductType randomType = rand.nextBoolean() ? ProductType.ALLOWED_FOR_CHILDREN : ProductType.NOT_ALLOWED_FOR_CHILDREN;
-		ProductMeasuringType randomMeasureType = rand.nextBoolean() ? ProductMeasuringType.BY_QUANTITY : ProductMeasuringType.BY_WEIGHT;
-		float randomQuantity = rand.nextFloat() * ((100 - 10) + 1) + 10;
-		float randomPrice = rand.nextFloat() * ((1000 - 1) + 1) + 1;
-		String name = "product" + index;
-		Product product = new Product(name, randomPrice, randomType, randomMeasureType, randomQuantity);
-		boolean isHasBonuses = rand.nextBoolean();
-		if (isHasBonuses)
+	public void work() {
+		while (!_timer.checkEndOfTime())
 		{
-			int bonuses = rand.nextInt((100 - 1) + 1) + 1;
-			product.setBonusesForPurchasing(bonuses);
+			if (isNeedToCreateNewCustomer()) {
+				_customers.add(_customerGenerator.getNewCustomer());
+			}
+
+			for (int i = 0; i < _customers.size(); ++i) {
+				_customers.get(i).chooseCurrState();
+				_customers.get(i).decreaseTime();
+				if (_customers.get(i).getCurrState() == StatesInSupermarket.WANT_TO_TAKE_PRODUCT) {
+					//_customers.get(i).takeSomeProducts();
+					_customers.get(i).setWaitTimeInMinutes(10);
+					System.out.println(_timer.getCurrTimeToString()  + " : " + _customers.get(i).getName() + " " + _customers.get(i).getCurrState().toString());
+				}
+
+				if (_customers.get(i).getCurrState() == StatesInSupermarket.WANT_TO_EXIT) {
+					//_customers.get(i).exitFromSupermarket();
+					System.out.println(_timer.getCurrTimeToString()  + " : " + _customers.get(i).getName() + " " + _customers.get(i).getCurrState().toString());
+				}
+
+				if (_customers.get(i).getCurrState() == StatesInSupermarket.WANT_TO_STAY_IN_QUEUE) {
+					//_customers.get(i).stayInQueue();
+					System.out.println(_timer.getCurrTimeToString()  + " : " + _customers.get(i).getName() + " " + _customers.get(i).getCurrState().toString());
+				}
+			}
+
+			//processOnePersonInQueue();
+			_timer.increaseTime();
 		}
 
-		return product;
+		System.out.println("Exit" + _timer.getCurrTimeToString());
 	}
 
-	// set time
-	//
-
-
+	private boolean isNeedToCreateNewCustomer() {
+		return _random.nextBoolean();
+	}
 }

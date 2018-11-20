@@ -1,7 +1,7 @@
 package com.company.supermarket.cashdesk;
 
 public class CashDesk {
-	private float _money = 0;
+	private float _money;
 
 	public CashDesk(float startQuantityOfMoney) {
 		_money = startQuantityOfMoney;

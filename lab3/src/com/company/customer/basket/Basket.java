@@ -8,7 +8,11 @@ import java.util.List;
 public class Basket {
 	private List<Product> _products = new ArrayList<>();
 
-	public void AddProduct() {
+	public void AddProduct(Product products) {
 
+	}
+
+	public List<Product> getProducts() {
+		return _products;
 	}
 }
