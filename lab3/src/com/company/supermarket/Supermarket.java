@@ -9,6 +9,7 @@ import com.company.supermarket.cashdesk.CashDesk;
 import com.company.supermarket.model.CustomerGenerator;
 import com.company.supermarket.model.ProductProcessor;
 import com.company.supermarket.model.ProductsGenerator;
+import com.company.supermarket.model.QueueProcessor;
 import com.company.supermarket.report.Report;
 import com.company.supermarket.timer.Timer;
 
@@ -22,6 +23,7 @@ public class Supermarket {
 	private Timer _timer;
 	private ProductProcessor _productProcessor;
 	private CustomerGenerator _customerGenerator = new CustomerGenerator();
+	private QueueProcessor _queueProcessor = new QueueProcessor();
 	private List<Customer> _customers = new ArrayList<>();
 	private Random _random = new Random();
 
