@@ -1,20 +1,14 @@
 package com.company.supermarket.timer;
 
-public class Timer {
-	private Time _startTime;
+import com.company.supermarket.timer.time.Time;
+
+public class Timer implements ITimer {
 	private Time _endTime;
 	private Time _currTime;
 
-	public Timer(Time startTime, Time endTime) {
-		_startTime = startTime;
-		_currTime = startTime;
-		_endTime = endTime;
-	}
-
 	public Timer(String startTimeStr, String endTimeStr) {
-		_startTime = new Time(startTimeStr);
-		System.out.println("curr" + _startTime.getInfo());
-		_currTime = _startTime;
+		_currTime = new Time(startTimeStr);
+		System.out.println("curr" + _currTime.getInfo());
 		_endTime = new Time(endTimeStr);
 		System.out.println("end" + _endTime.getInfo());
 	}
@@ -41,5 +35,4 @@ public class Timer {
 	public String getCurrTimeToString() {
 		return _currTime.getInfo();
 	}
-
 }

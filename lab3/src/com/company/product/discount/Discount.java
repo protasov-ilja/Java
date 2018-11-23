@@ -1,5 +1,5 @@
 package com.company.product.discount;
 
-public class Discount {
+public class Discount implements IDiscount {
 	private int _value;
 }

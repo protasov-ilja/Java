@@ -1,6 +1,6 @@
-package com.company.supermarket.timer;
+package com.company.supermarket.timer.time;
 
-public class Time {
+public class Time implements ITime {
 	private int _hours;
 	private int _minutes;
 

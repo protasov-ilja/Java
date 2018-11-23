@@ -1,4 +1,4 @@
-package com.company.supermarket.model;
+package com.company.supermarket.model.processors;
 
 import com.company.customer.Customer;
 
@@ -6,13 +6,18 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class QueueProcessor {
+	// TODO: remove uneccessary class move to CashDesk
 	private Deque<Customer> _queue = new ArrayDeque<>();
 
-	private void addCustomer(Customer customer) {
+	public void addCustomer(Customer customer) {
 		_queue.addLast(customer);
 	}
 
-	private Customer popCustomer() {
+	public Customer popCustomer() {
 		return _queue.pollFirst();
+	}
+
+	public boolean isQueueEmpty() {
+		return _queue.isEmpty();
 	}
 }
