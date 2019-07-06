@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CashDesk.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">my-app</a> &gt; <a href="index.source.html" class="el_package">com.mycompany.app.supermarket.cashdesk</a> &gt; <span class="el_source">CashDesk.java</span></div><h1>CashDesk.java</h1><pre class="source lang-java linenums">package com.mycompany.app.supermarket.cashdesk;
+
+import com.mycompany.app.customer.Customer;
+import com.mycompany.app.customer.enums.CustomerCategory;
+import com.mycompany.app.product.Product;
+import com.mycompany.app.product.enums.ProductType;
+
+import com.mycompany.app.supermarket.cashdesk.bill.Bill;
+import com.mycompany.app.supermarket.utils.Logger;
+import javafx.util.Pair;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.List;
+
+public class CashDesk implements ICashDesk {
+	private float _money;
+	private Deque&lt;Customer&gt; _queue;
+<span class="fc" id="L19">	private List&lt;Bill&gt; _bills = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L21">	public CashDesk() {</span>
+<span class="fc" id="L22">		_money = 0;</span>
+<span class="fc" id="L23">		_queue = new ArrayDeque&lt;&gt;();</span>
+<span class="fc" id="L24">	}</span>
+
+	public void addCustomer(Customer customer) {
+<span class="fc" id="L27">		_queue.addLast(customer);</span>
+<span class="fc" id="L28">	}</span>
+
+	public Customer popCustomer() {
+<span class="fc" id="L31">		return _queue.pollFirst();</span>
+	}
+
+	public boolean isQueueEmpty() {
+<span class="fc" id="L35">		return _queue.isEmpty();</span>
+	}
+
+	@Override
+	public float getMoney() {
+<span class="nc" id="L40">		return _money;</span>
+	}
+
+	@Override
+	public List&lt;Pair&lt;Product, Float&gt;&gt; serveCustomer(Customer customer) {
+<span class="fc" id="L45">		List&lt;Pair&lt;Product, Float&gt;&gt; returnedList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L46">		float sum = 0;</span>
+<span class="fc" id="L47">		boolean isChild = checkIsChild(customer.getCustomerCategory());</span>
+<span class="fc" id="L48">		float tempBonuses = 0;</span>
+<span class="fc" id="L49">		Bill bill = new Bill();</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">		for (int i = 0; i &lt; customer.getProductsFromBasket().size(); ++i) {</span>
+<span class="fc bfc" id="L51" title="All 4 branches covered.">			if (isChild &amp;&amp; (customer.getProductsFromBasket().get(i).getKey().getType() == ProductType.NOT_ALLOWED_FOR_CHILDREN)) {</span>
+<span class="fc" id="L52">				returnedList.add(customer.returnProducts(i));</span>
+			} else {
+<span class="fc bfc" id="L54" title="All 4 branches covered.">				if (customer.getCustomerCategory() == CustomerCategory.RETIRED &amp;&amp; customer.getProductsFromBasket().get(i).getKey().isHasDiscount()) {</span>
+<span class="fc" id="L55">					sum += (customer.getProductsFromBasket().get(i).getKey().getPrice() * customer.getProductsFromBasket().get(i).getValue()) * customer.getProductsFromBasket().get(i).getKey().getDiscount();</span>
+				} else {
+<span class="fc" id="L57">					sum += (customer.getProductsFromBasket().get(i).getKey().getPrice() * customer.getProductsFromBasket().get(i).getValue());</span>
+				}
+
+<span class="fc" id="L60">				tempBonuses += customer.getProductsFromBasket().get(i).getKey().getBonusesForPurchasing() * customer.getProductsFromBasket().get(i).getValue();</span>
+<span class="fc" id="L61">				bill.add(customer.getProductsFromBasket().get(i));</span>
+			}
+		}
+
+<span class="pc bpc" id="L65" title="1 of 4 branches missed.">		if (customer.pay(sum) &amp;&amp; sum != 0) {</span>
+<span class="nc" id="L66">			_money += sum;</span>
+<span class="nc" id="L67">			customer.addBonuses(tempBonuses);</span>
+<span class="nc" id="L68">			bill.addMoney(sum);</span>
+<span class="nc" id="L69">			bill.addBonuses(tempBonuses);</span>
+<span class="nc" id="L70">			bill.showInfo();</span>
+<span class="nc" id="L71">			_bills.add(bill);</span>
+<span class="nc" id="L72">			Logger.showProductBougtByCustomer(customer, customer.getProductsFromBasket());</span>
+		} else {
+<span class="fc" id="L74">			returnedList.addAll(customer.returnAllProducts());</span>
+		}
+
+<span class="fc" id="L77">		return returnedList;</span>
+	}
+
+	private boolean checkIsChild(CustomerCategory category) {
+<span class="fc bfc" id="L81" title="All 2 branches covered.">		return (category == CustomerCategory.CHILD);</span>
+	}
+
+	public List&lt;Bill&gt; getBills() {
+<span class="fc" id="L85">		return _bills;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

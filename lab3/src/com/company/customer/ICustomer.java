@@ -2,14 +2,15 @@ package com.company.customer;
 
 import com.company.customer.enums.CustomerCategory;
 import com.company.customer.enums.StatesInSupermarket;
-import com.company.product.Products;
+import com.company.product.Product;
+import javafx.util.Pair;
 
 import java.util.List;
 
 public interface ICustomer {
 	CustomerCategory getCustomerCategory();
 
-	List<Products> getProductsFromBasket();
+	List<Pair<Product, Float>> getProductsFromBasket();
 
 	String getName();
 
@@ -17,11 +18,11 @@ public interface ICustomer {
 
 	void chooseCurrState();
 
-	List<Products> returnAllProducts();
+	List<Pair<Product, Float>> returnAllProducts();
 
-	Products returnProducts(int index);
+	Pair<Product, Float> returnProducts(int index);
 
-	float pay(float amountOfMoney);
+	boolean pay(float amountOfMoney);
 
-	int putProductInBasket(List<Products> products);
+	int putProductInBasket(List<Pair<Product, Float>> products);
 }

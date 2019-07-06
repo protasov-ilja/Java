@@ -15,25 +15,43 @@ public class PaymentMethod implements IPaymentMethod {
 		return _cash;
 	}
 
+	@Override
 	public float getBankCard() {
 		return _bankCard;
 	}
 
+	@Override
 	public float getBonuses() {
 		return _bonuses;
 	}
 
+	@Override
 	public float getAllMoney() {
 		return _bonuses + _bankCard + _cash;
 	}
 
-	public void processMoneyForPaying(float money) {
-		if (money - _cash <= 0) {
-			_cash -= money;
-		}
-	}
+	@Override
+	public boolean processMoneyForPaying(float money) {
+		if (money <= getAllMoney()) {
+			float temp = _cash;
+			if (money > 0) {
+				_cash -= money;
+				money -= temp;
+			}
 
-//	private void ProcessMoney(float money, flaot currMoney) {
-//
-//	}
+			if (money > 0) {
+				temp = _bankCard;
+				_bankCard -= money;
+				money -= temp;
+			}
+
+			if (money > 0) {
+				_bonuses -= money;
+			}
+
+			return true;
+		}
+
+		return false;
+	}
 }

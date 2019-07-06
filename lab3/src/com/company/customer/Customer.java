@@ -6,7 +6,7 @@ import com.company.customer.enums.CustomerCategory;
 import com.company.customer.enums.StatesInSupermarket;
 import com.company.customer.paymentmethod.PaymentMethod;
 import com.company.product.Product;
-import com.company.product.Products;
+import javafx.util.Pair;
 
 import java.util.List;
 import java.util.Random;
@@ -31,37 +31,36 @@ public class Customer implements ICustomer {
 	}
 
 	@Override
-	public List<Products> getProductsFromBasket() {
+	public List<Pair<Product, Float>> getProductsFromBasket() {
 		return _basket.getProducts();
 	}
 
 	@Override
-	public List<Products> returnAllProducts() {
+	public List<Pair<Product, Float>> returnAllProducts() {
 		return _basket.takeAllProducts();
 	}
 
 	@Override
-	public Products returnProducts(int index) {
+	public Pair<Product, Float> returnProducts(int index) {
 		return _basket.takeProducts(index);
 	}
 
 	@Override
-	public float pay(float amountOfMoney) {
-		_paymentMethod.processMoneyForPaying(amountOfMoney);
-
-		return amountOfMoney;
+	public boolean pay(float needAmountOfMoney) {
+		return _paymentMethod.processMoneyForPaying(needAmountOfMoney);
 	}
 
 	@Override
-	public int putProductInBasket(List<Products> products) {
+	public int putProductInBasket(List<Pair<Product, Float>> products) {
 		if (_paymentMethod.getCash() != 0 || _paymentMethod.getBankCard() != 0 || _paymentMethod.getBonuses() != 0) {
-			int index = chooseRandomProductIndex(products);
-			float maxAmount = products.get(index).getQuantity();
+			int index = chooseRandomProductIndex(products.size());
+			float maxAmount = products.get(index).getValue();
 			float amount = chooseRandomAmount(maxAmount);
 			if (amount != 0) {
-				if (canTakeProduct(products.get(index).getProduct(), amount)) {
-					products.get(index).setQuantity(products.get(index).getQuantity() - amount);
-					_basket.addProduct(products.get(index).getProduct(), amount);
+				if (canTakeProduct(products.get(index).getKey(), amount)) {
+					Pair<Product, Float> pair = new Pair<>(products.get(index).getKey(), products.get(index).getValue() - amount);
+					products.set(index, pair);
+					_basket.addProduct(products.get(index).getKey(), amount);
 
 					return index;
 				}
@@ -71,14 +70,14 @@ public class Customer implements ICustomer {
 		return -1;
 	}
 
-	private int chooseRandomProductIndex(List<Products> products) {
+	private int chooseRandomProductIndex(int arrLength) {
 		Random rand = new Random();
-		return rand.nextInt(products.size());
+		return rand.nextInt(arrLength);
 	}
 
 	private float chooseRandomAmount(float maxAmount) {
 		Random rand = new Random();
-		return rand.nextFloat() * ((maxAmount - 0) + 1) + 0;
+		return rand.nextFloat() * (maxAmount + 1);
 	}
 
 	private boolean canTakeProduct(Product product, float randomAmount) {

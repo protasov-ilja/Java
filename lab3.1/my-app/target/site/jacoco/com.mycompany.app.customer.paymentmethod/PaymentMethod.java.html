@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PaymentMethod.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">my-app</a> &gt; <a href="index.source.html" class="el_package">com.mycompany.app.customer.paymentmethod</a> &gt; <span class="el_source">PaymentMethod.java</span></div><h1>PaymentMethod.java</h1><pre class="source lang-java linenums">package com.mycompany.app.customer.paymentmethod;
+
+public class PaymentMethod implements IPaymentMethod {
+	private double _cash;
+	private double _bankCard;
+	private double _bonuses;
+
+<span class="fc" id="L8">	public PaymentMethod(double cash, double bankCard, double bonuses) {</span>
+<span class="pc bpc" id="L9" title="1 of 6 branches missed.">		if (checkNumberNotNegative(cash) &amp;&amp; checkNumberNotNegative(bankCard) &amp;&amp; checkNumberNotNegative(bonuses)) {</span>
+<span class="fc" id="L10">			_cash = cash;</span>
+<span class="fc" id="L11">			_bankCard = bankCard;</span>
+<span class="fc" id="L12">			_bonuses = bonuses;</span>
+		}
+<span class="fc" id="L14">	}</span>
+
+	@Override
+	public void addBonuses(double bonuses) {
+<span class="fc" id="L18">		_bonuses += bonuses;</span>
+<span class="fc" id="L19">	}</span>
+
+	@Override
+	public double getCash() {
+<span class="fc" id="L23">		return _cash;</span>
+	}
+
+	@Override
+	public double getBankCard() {
+<span class="fc" id="L28">		return _bankCard;</span>
+	}
+
+	@Override
+	public double getBonuses() {
+<span class="fc" id="L33">		return _bonuses;</span>
+	}
+
+	@Override
+	public double getAllMoney() {
+<span class="fc" id="L38">		return _bonuses + _bankCard + _cash;</span>
+	}
+
+	@Override
+	public boolean processMoneyForPaying(double money) {
+<span class="fc bfc" id="L43" title="All 2 branches covered.">		if (money &lt;= getAllMoney()) {</span>
+<span class="fc" id="L44">			double temp = _cash;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">			if (money &gt; 0) {</span>
+<span class="fc" id="L46">				_cash -= money;</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">				if (_cash &lt; 0) {</span>
+<span class="fc" id="L48">					_cash = 0;</span>
+				}
+
+<span class="fc" id="L51">				money -= temp;</span>
+			}
+
+<span class="fc bfc" id="L54" title="All 2 branches covered.">			if (money &gt; 0) {</span>
+<span class="fc" id="L55">				temp = _bankCard;</span>
+<span class="fc" id="L56">				_bankCard -= money;</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">				if (_bankCard &lt; 0) {</span>
+<span class="fc" id="L58">					_bankCard = 0;</span>
+				}
+<span class="fc" id="L60">				money -= temp;</span>
+			}
+
+<span class="fc bfc" id="L63" title="All 2 branches covered.">			if (money &gt; 0) {</span>
+<span class="fc" id="L64">				_bonuses -= money;</span>
+			}
+
+<span class="fc" id="L67">			return true;</span>
+		}
+
+<span class="fc" id="L70">		return false;</span>
+	}
+
+	private boolean checkNumberNotNegative(double number) {
+<span class="fc bfc" id="L74" title="All 2 branches covered.">		return number &gt; 0;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

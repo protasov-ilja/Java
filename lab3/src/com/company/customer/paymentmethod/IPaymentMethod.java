@@ -9,5 +9,5 @@ public interface IPaymentMethod {
 
 	float getAllMoney();
 
-	void processMoneyForPaying(float money);
+	boolean processMoneyForPaying(float money);
 }

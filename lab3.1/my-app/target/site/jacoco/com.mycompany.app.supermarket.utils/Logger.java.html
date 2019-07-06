@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Logger.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">my-app</a> &gt; <a href="index.source.html" class="el_package">com.mycompany.app.supermarket.utils</a> &gt; <span class="el_source">Logger.java</span></div><h1>Logger.java</h1><pre class="source lang-java linenums">package com.mycompany.app.supermarket.utils;
+
+import com.mycompany.app.customer.Customer;
+import com.mycompany.app.product.Product;
+import com.mycompany.app.supermarket.timer.Timer;
+import javafx.util.Pair;
+
+import java.util.List;
+
+<span class="nc" id="L10">public class Logger {</span>
+	public static void showCreatedProducts(List&lt;Pair&lt;Product, Float&gt;&gt; products) {
+<span class="fc" id="L12">		System.out.println(&quot; PRODUCTS CREATED:&quot;);</span>
+<span class="fc bfc" id="L13" title="All 2 branches covered.">		for (int i = 0; i &lt; products.size(); ++i) {</span>
+<span class="fc" id="L14">			System.out.println(products.get(i).getValue() + &quot; : &quot; + products.get(i).getKey().getInfo());</span>
+		}
+<span class="fc" id="L16">	}</span>
+
+	public static void showCreatedCustomer(Customer customer) {
+<span class="fc" id="L19">		System.out.println(&quot; CUSTOMER ENTER:&quot;);</span>
+<span class="fc" id="L20">		System.out.println(&quot;  &quot; + customer.getInfo());</span>
+<span class="fc" id="L21">	}</span>
+
+	public static void showProductsPeakedByCustomer(Customer customer, Product product, float amount) {
+<span class="fc" id="L24">		System.out.println(&quot; PRODUCT PEAKED BY : &quot; + customer.getName());</span>
+<span class="fc" id="L25">		System.out.println(&quot;  &quot; + amount + &quot; : &quot; + product.getInfo());</span>
+<span class="fc" id="L26">	}</span>
+
+	public static void showReturnedProducts(Customer customer, List&lt;Pair&lt;Product, Float&gt;&gt; products) {
+<span class="fc" id="L29">		System.out.println(&quot; PRODUCTS RETURNED BY : &quot; + customer.getName());</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">		for (int i = 0; i &lt; products.size(); ++i) {</span>
+<span class="fc" id="L31">			System.out.println(&quot;  &quot; + products.get(i).getValue() + &quot; : &quot; + products.get(i).getKey().getInfo());</span>
+		}
+<span class="fc" id="L33">	}</span>
+
+	public static void showCurrTime(Timer timer) {
+<span class="fc" id="L36">		System.out.println(timer.getCurrTimeToString() + &quot;:&quot;);</span>
+<span class="fc" id="L37">	}</span>
+
+	public static void showCustomerStayInQueue(Customer customer) {
+<span class="fc" id="L40">		System.out.println(&quot; &quot; + customer.getName() + &quot; STAYED IN QUEUE&quot;);</span>
+<span class="fc" id="L41">	}</span>
+
+	public static void showCustomerLeftSupermarket(Customer customer) {
+<span class="fc" id="L44">		System.out.println(&quot; &quot; + customer.getName() + &quot; LEFT SUPERMARKET&quot;);</span>
+<span class="fc" id="L45">	}</span>
+
+	public static void showProductBougtByCustomer(Customer customer, List&lt;Pair&lt;Product, Float&gt;&gt; products) {
+<span class="nc" id="L48">		System.out.println(&quot; PRODUCTS BOUGHT BY : &quot; + customer.getName());</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">		for (int i = 0; i &lt; products.size(); ++i) {</span>
+<span class="nc" id="L50">			System.out.println(&quot;  &quot; + products.get(i).getValue() + &quot; : &quot; + products.get(i).getKey().getInfo());</span>
+		}
+<span class="nc" id="L52">	}</span>
+
+	public static void showOpenTime(Timer timer) {
+<span class="nc" id="L55">		System.out.println(&quot;SUPERMARKET OPENED AT: &quot; + timer.getCurrTimeToString());</span>
+<span class="nc" id="L56">	}</span>
+
+	public static void showCloseTime(Timer timer) {
+<span class="fc" id="L59">		System.out.println(&quot;SUPERMARKET CLOSE AT: &quot; + timer.getCloseTimeToString());</span>
+<span class="fc" id="L60">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

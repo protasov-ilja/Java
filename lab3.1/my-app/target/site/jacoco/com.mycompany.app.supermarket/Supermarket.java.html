@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Supermarket.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">my-app</a> &gt; <a href="index.source.html" class="el_package">com.mycompany.app.supermarket</a> &gt; <span class="el_source">Supermarket.java</span></div><h1>Supermarket.java</h1><pre class="source lang-java linenums">package com.mycompany.app.supermarket;
+
+import com.mycompany.app.customer.Customer;
+import com.mycompany.app.customer.enums.StatesInSupermarket;
+import com.mycompany.app.product.Product;
+import com.mycompany.app.supermarket.cashdesk.CashDesk;
+import com.mycompany.app.supermarket.model.generators.CustomerGenerator;
+import com.mycompany.app.supermarket.model.processors.ProductProcessor;
+import com.mycompany.app.supermarket.model.generators.ProductsGenerator;
+import com.mycompany.app.supermarket.report.Report;
+import com.mycompany.app.supermarket.timer.Timer;
+import com.mycompany.app.supermarket.utils.Logger;
+import javafx.util.Pair;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class Supermarket implements ISupermarket {
+<span class="fc" id="L19">	private CashDesk _cashDesk = new CashDesk();</span>
+	private Report _report;
+	private Timer _timer;
+	private ProductProcessor _productProcessor;
+<span class="fc" id="L23">	private CustomerGenerator _customerGenerator = new CustomerGenerator();</span>
+<span class="fc" id="L24">	private List&lt;Customer&gt; _customers = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L25">	private Random _random = new Random();</span>
+
+<span class="fc" id="L27">	public Supermarket(String startTime, String endTime) throws IllegalArgumentException {</span>
+<span class="fc" id="L28">		ProductsGenerator productsGenerator = new ProductsGenerator(10, 20);</span>
+<span class="fc" id="L29">		List&lt;Pair&lt;Product, Float&gt;&gt; products = productsGenerator.getListOfProducts();</span>
+<span class="fc" id="L30">		Logger.showCreatedProducts(products);</span>
+<span class="fc" id="L31">		_productProcessor = new ProductProcessor(products);</span>
+<span class="fc" id="L32">		_timer = new Timer(startTime, endTime);</span>
+<span class="fc" id="L33">		Logger.showCurrTime(_timer);</span>
+<span class="fc" id="L34">		Logger.showCloseTime(_timer);</span>
+<span class="fc" id="L35">	}</span>
+
+	@Override
+	public void work() {
+<span class="fc bfc" id="L39" title="All 2 branches covered.">		while (!_timer.checkEndOfTime()) {</span>
+<span class="fc" id="L40">			Logger.showCurrTime(_timer);</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">			if (isNeedToCreateNewCustomer()) {</span>
+<span class="fc" id="L42">				addNewCustomer(1);</span>
+			}
+
+<span class="fc bfc" id="L45" title="All 2 branches covered.">			for (int i = 0; i &lt; _customers.size(); ++i) {</span>
+<span class="fc" id="L46">				_customers.get(i).chooseCurrState();</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">				if (_customers.get(i).getCurrState() == StatesInSupermarket.WANT_TO_TAKE_PRODUCT) {</span>
+<span class="fc" id="L48">					wantToTakeProducts(i);</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">				} else if (_customers.get(i).getCurrState() == StatesInSupermarket.WANT_TO_EXIT) {</span>
+<span class="fc" id="L50">					exitCustomerFromSupermarket(i);</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">				} else if (_customers.get(i).getCurrState() == StatesInSupermarket.WANT_TO_STAY_IN_QUEUE) {</span>
+<span class="fc" id="L52">					StayedCustomerInQueue(_customers.remove(i));</span>
+				}
+			}
+
+<span class="fc bfc" id="L56" title="All 2 branches covered.">			if (!_cashDesk.isQueueEmpty()) {</span>
+<span class="fc" id="L57">				processQueue(_cashDesk.popCustomer());</span>
+			}
+
+<span class="fc" id="L60">			_timer.increaseTime();</span>
+		}
+
+<span class="fc bfc" id="L63" title="All 2 branches covered.">		for (int i = 0; i &lt; _customers.size(); ++i) {</span>
+<span class="fc" id="L64">			exitCustomerFromSupermarket(i);</span>
+		}
+
+<span class="fc" id="L67">		Logger.showCloseTime(_timer);</span>
+<span class="fc" id="L68">		showReport();</span>
+<span class="fc" id="L69">	}</span>
+
+	private void addNewCustomer(int amount) {
+<span class="fc bfc" id="L72" title="All 2 branches covered.">		for (int i = 0; i &lt; amount; ++i) {</span>
+<span class="fc" id="L73">			Customer customer = _customerGenerator.getNewCustomer();</span>
+<span class="fc" id="L74">			Logger.showCreatedCustomer(customer);</span>
+<span class="fc" id="L75">			_customers.add(customer);</span>
+		}
+<span class="fc" id="L77">	}</span>
+
+	private void StayedCustomerInQueue(Customer customer) {
+<span class="fc" id="L80">		Logger.showCustomerStayInQueue(customer);</span>
+<span class="fc" id="L81">		_cashDesk.addCustomer(customer);</span>
+<span class="fc" id="L82">	}</span>
+
+	private void exitCustomerFromSupermarket(int index) {
+<span class="fc" id="L85">		List&lt;Pair&lt;Product, Float&gt;&gt; returningProducts = _customers.get(index).returnAllProducts();</span>
+<span class="fc" id="L86">		Logger.showReturnedProducts(_customers.get(index), returningProducts);</span>
+<span class="fc" id="L87">		_productProcessor.addProducts(returningProducts);</span>
+<span class="fc" id="L88">		Logger.showCustomerLeftSupermarket(_customers.get(index));</span>
+<span class="fc" id="L89">		_customers.remove(index);</span>
+<span class="fc" id="L90">	}</span>
+
+	private void wantToTakeProducts(int index) {
+<span class="fc" id="L93">		int pickedIndex = _customers.get(index).putProductInBasket(_productProcessor.getProducts());</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">		if (pickedIndex != -1) {</span>
+<span class="fc" id="L95">			_productProcessor.checkProductResidue(pickedIndex);</span>
+		}
+<span class="fc" id="L97">	}</span>
+
+	private void processQueue(Customer customer) {
+<span class="fc" id="L100">		List&lt;Pair&lt;Product, Float&gt;&gt; returningProducts = _cashDesk.serveCustomer(customer);</span>
+<span class="fc" id="L101">		Logger.showReturnedProducts(customer, returningProducts);</span>
+<span class="fc" id="L102">		_productProcessor.addProducts(returningProducts);</span>
+<span class="fc" id="L103">	}</span>
+
+	private void showReport() {
+<span class="fc" id="L106">		_report = new Report();</span>
+<span class="fc" id="L107">		_report.create(_cashDesk.getBills());</span>
+<span class="fc" id="L108">	}</span>
+
+	private boolean isNeedToCreateNewCustomer() {
+<span class="fc" id="L111">		return _random.nextBoolean();</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

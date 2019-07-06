@@ -1,5 +1,6 @@
 package com.company.product;
 
+import com.company.product.discount.Discount;
 import com.company.product.enums.ProductMeasuringType;
 import com.company.product.enums.ProductType;
 
@@ -7,6 +8,7 @@ public class Product implements IProduct {
 	private String _name;
 	private ProductType _type;
 	private ProductMeasuringType _measuringType;
+	private Discount _discount = new Discount();
 	private float _price;
 	private int _bonusesForPurchasing;
 	private boolean _isHasBonuses = false;

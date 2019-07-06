@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Bill.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">my-app</a> &gt; <a href="index.source.html" class="el_package">com.mycompany.app.supermarket.cashdesk.bill</a> &gt; <span class="el_source">Bill.java</span></div><h1>Bill.java</h1><pre class="source lang-java linenums">package com.mycompany.app.supermarket.cashdesk.bill;
+
+import com.mycompany.app.product.Product;
+import javafx.util.Pair;
+
+import java.util.ArrayList;
+import java.util.List;
+
+<span class="fc" id="L9">public class Bill implements IBill {</span>
+	private float _amountOfMoney;
+	private float _bonuses;
+<span class="fc" id="L12">	private List&lt;Pair&lt;Product, Float&gt;&gt; _products = new ArrayList&lt;&gt;();</span>
+
+	public void add(Pair&lt;Product, Float&gt; product) {
+<span class="fc" id="L15">		_products.add(product);</span>
+<span class="fc" id="L16">	}</span>
+
+	public void addMoney(float money) {
+<span class="nc" id="L19">		_amountOfMoney = money;</span>
+<span class="nc" id="L20">	}</span>
+
+	public void addBonuses(float bonuses) {
+<span class="nc" id="L23">		_bonuses = bonuses;</span>
+<span class="nc" id="L24">	}</span>
+
+	public float getMoney() {
+<span class="nc" id="L27">		return _amountOfMoney;</span>
+	}
+
+	public float getBonuses() {
+<span class="nc" id="L31">		return _bonuses;</span>
+	}
+
+	public void showInfo() {
+<span class="nc" id="L35">		System.out.println(&quot; BILL&quot;);</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">		for (int i = 0; i &lt; _products.size(); ++i) {</span>
+<span class="nc" id="L37">			System.out.println(&quot;  &quot; + _products.get(i).getKey().getInfo() + &quot; : &quot; + _products.get(i).getValue());</span>
+		}
+
+<span class="nc" id="L40">		System.out.println(&quot; money: &quot; + getMoneyToString() + &quot; bonuses: &quot; + getBonusesToString());</span>
+<span class="nc" id="L41">	}</span>
+
+	private String getMoneyToString() {
+<span class="nc" id="L44">		return String.format(&quot;%.2f&quot;, getMoney());</span>
+	}
+
+	private String getBonusesToString() {
+<span class="nc" id="L48">		return String.format(&quot;%.2f&quot;, getBonuses());</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

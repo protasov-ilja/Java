@@ -1,29 +1,39 @@
 package com.company.supermarket.model.processors;
 
-import com.company.product.Products;
+import com.company.product.Product;
+import javafx.util.Pair;
 
 import java.util.List;
 
-public class ProductProcessor implements IProductProcessor{
-	private List<Products> _products;
-	private List<Products> _soldedProducts;
+public class ProductProcessor implements IProductProcessor {
+	private List<Pair<Product, Float>> _products;
 
-	public ProductProcessor(List<Products> products) {
+	public ProductProcessor(List<Pair<Product, Float>> products) {
 		_products = products;
 	}
 
-	public void addProducts(List<Products> products) {
+	@Override
+	public void addProducts(List<Pair<Product, Float>> products) {
 		for (int i = 0; i < products.size(); ++i) {
+			for (int j = 0; j < _products.size(); ++j) {
+				if (_products.get(j).getKey().equals(products.get(i).getKey())) {
+					Pair<Product, Float> pair = new Pair<>(_products.get(j).getKey(), _products.get(j).getValue() + products.get(i).getValue());
+					_products.set(j, pair);
 
+					break;
+				}
+			}
 		}
 	}
 
-	public List<Products> getProducts() {
+	@Override
+	public List<Pair<Product, Float>> getProducts() {
 		return _products;
 	}
 
+	@Override
 	public void checkProductResidue(int productIndex) {
-		if (_products.get(productIndex).getQuantity() == 0) {
+		if (_products.get(productIndex).getValue() <= 0) {
 			_products.remove(productIndex);
 		}
 	}

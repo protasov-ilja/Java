@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductsGenerator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">my-app</a> &gt; <a href="index.source.html" class="el_package">com.mycompany.app.supermarket.model.generators</a> &gt; <span class="el_source">ProductsGenerator.java</span></div><h1>ProductsGenerator.java</h1><pre class="source lang-java linenums">package com.mycompany.app.supermarket.model.generators;
+
+import com.mycompany.app.product.Product;
+import com.mycompany.app.product.enums.ProductMeasuringType;
+import com.mycompany.app.product.enums.ProductType;
+import javafx.util.Pair;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class ProductsGenerator implements IProductsGenerator {
+	private static final float MAX_PRICE = 3000;
+	private static final float MIN_PRICE = 5;
+
+	private List&lt;Pair&lt;Product, Float&gt;&gt; _products;
+	private int _maxNumberOfProducts;
+	private int _minNumberOfProducts;
+
+<span class="fc" id="L20">	public ProductsGenerator(int minNumberOfProducts, int maxNumberOfProducts) {</span>
+<span class="fc" id="L21">		_minNumberOfProducts = minNumberOfProducts;</span>
+<span class="fc" id="L22">		_maxNumberOfProducts = maxNumberOfProducts;</span>
+<span class="fc" id="L23">		generateListOfProducts();</span>
+<span class="fc" id="L24">	}</span>
+
+	@Override
+	public List&lt;Pair&lt;Product, Float&gt;&gt; getListOfProducts() {
+<span class="fc" id="L28">		return _products;</span>
+	}
+
+	private Product generateRandomProduct(int index) {
+<span class="fc" id="L32">		Random rand = new Random();</span>
+<span class="fc" id="L33">		ProductType randomType = ProductType.values()[rand.nextInt(ProductType.values().length)];</span>
+<span class="fc" id="L34">		ProductMeasuringType randomMeasureType = ProductMeasuringType.values()[rand.nextInt(ProductMeasuringType.values().length)];</span>
+<span class="fc" id="L35">		float randomPrice = rand.nextFloat() * ((MAX_PRICE - MIN_PRICE) + 1) + MIN_PRICE;</span>
+<span class="fc" id="L36">		String name = &quot;product&quot; + index;</span>
+<span class="fc" id="L37">		Product product = new Product(name, randomPrice, randomType, randomMeasureType);</span>
+<span class="fc" id="L38">		boolean isHasBonuses = rand.nextBoolean();</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">		if (isHasBonuses) {</span>
+<span class="fc" id="L40">			int bonuses = rand.nextInt((100 - 1) + 1) + 1;</span>
+<span class="fc" id="L41">			product.addBonusesForPurchasing(bonuses);</span>
+		}
+
+<span class="fc" id="L44">		boolean isHasDiscount = rand.nextBoolean();</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">		if (isHasDiscount) {</span>
+<span class="fc" id="L46">			product.createDiscount(20);</span>
+		}
+
+<span class="fc" id="L49">		return product;</span>
+	}
+
+	private Pair&lt;Product, Float&gt; generateRandomProducts(Product product) {
+<span class="fc" id="L53">		Random rand = new Random();</span>
+<span class="fc" id="L54">		float randomQuantity = rand.nextFloat() * ((100 - 10) + 1) + 10;</span>
+<span class="fc" id="L55">		return new Pair&lt;&gt;(product, randomQuantity);</span>
+	}
+
+	private void generateListOfProducts() {
+<span class="fc" id="L59">		Random rand = new Random();</span>
+<span class="fc" id="L60">		int productsNumber = rand.nextInt((_maxNumberOfProducts - _minNumberOfProducts) + 1) + _minNumberOfProducts;</span>
+<span class="fc" id="L61">		_products = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">		for (int i = 0; i &lt; productsNumber; ++i) {</span>
+<span class="fc" id="L63">			_products.add(generateRandomProducts(generateRandomProduct(i)));</span>
+		}
+<span class="fc" id="L65">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

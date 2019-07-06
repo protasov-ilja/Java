@@ -7,12 +7,16 @@ public class Timer implements ITimer {
 	private Time _currTime;
 
 	public Timer(String startTimeStr, String endTimeStr) {
-		_currTime = new Time(startTimeStr);
-		System.out.println("curr" + _currTime.getInfo());
-		_endTime = new Time(endTimeStr);
-		System.out.println("end" + _endTime.getInfo());
+		try {
+			_currTime = new Time(startTimeStr);
+			_endTime = new Time(endTimeStr);
+		} catch (Exception er) {
+
+		}
+
 	}
 
+	@Override
 	public void increaseTime() {
 		if (_currTime.getMinutes() == 59) {
 			_currTime.setMinutes(0);
@@ -28,10 +32,12 @@ public class Timer implements ITimer {
 		System.out.println(_currTime.getInfo());
 	}
 
+	@Override
 	public boolean checkEndOfTime() {
 		return _currTime.equals(_endTime);
 	}
 
+	@Override
 	public String getCurrTimeToString() {
 		return _currTime.getInfo();
 	}

@@ -1,13 +1,14 @@
 package com.company.supermarket.model.processors;
 
-import com.company.product.Products;
+import com.company.product.Product;
+import javafx.util.Pair;
 
 import java.util.List;
 
 public interface IProductProcessor {
-	void addProducts(List<Products> products);
+	void addProducts(List<Pair<Product, Float>> products);
 
-	List<Products> getProducts();
+	List<Pair<Product, Float>> getProducts();
 
 	void checkProductResidue(int productIndex);
 }

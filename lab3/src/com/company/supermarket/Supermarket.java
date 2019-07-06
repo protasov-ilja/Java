@@ -2,41 +2,38 @@ package com.company.supermarket;
 
 import com.company.customer.Customer;
 import com.company.customer.enums.StatesInSupermarket;
-import com.company.product.Products;
+import com.company.product.Product;
 import com.company.supermarket.cashdesk.CashDesk;
 import com.company.supermarket.model.generators.CustomerGenerator;
 import com.company.supermarket.model.processors.ProductProcessor;
 import com.company.supermarket.model.generators.ProductsGenerator;
-import com.company.supermarket.model.processors.QueueProcessor;
 import com.company.supermarket.report.Report;
 import com.company.supermarket.timer.Timer;
-
+import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Supermarket implements ISupermarket {
-	private CashDesk _cashDesk = new CashDesk(10000);
+	private CashDesk _cashDesk = new CashDesk();
 	private Report _report;
 	private Timer _timer;
 	private ProductProcessor _productProcessor;
 	private CustomerGenerator _customerGenerator = new CustomerGenerator();
-	private QueueProcessor _queueProcessor = new QueueProcessor();
 	private List<Customer> _customers = new ArrayList<>();
 	private Random _random = new Random();
 
 	public Supermarket(String startTime, String endTime) {
 		ProductsGenerator productsGenerator = new ProductsGenerator(10, 20);
-		List<Products> products = productsGenerator.getListOfProducts();
+		List<Pair<Product, Float>> products = productsGenerator.getListOfProducts();
 		_productProcessor = new ProductProcessor(products);
 		_timer = new Timer(startTime, endTime);
-		System.out.println(_timer.getCurrTimeToString());
+		_report = new Report();
 	}
 
 	@Override
 	public void work() {
-		while (!_timer.checkEndOfTime())
-		{
+		while (!_timer.checkEndOfTime()) {
 			if (isNeedToCreateNewCustomer()) {
 				_customers.add(_customerGenerator.getNewCustomer());
 			}
@@ -49,21 +46,18 @@ public class Supermarket implements ISupermarket {
 						_productProcessor.checkProductResidue(index);
 					}
 
-					System.out.println(_timer.getCurrTimeToString()  + " : " + _customers.get(i).getName() + " " + _customers.get(i).getCurrState().toString());
 				} else if (_customers.get(i).getCurrState() == StatesInSupermarket.WANT_TO_EXIT) {
-					System.out.println(_timer.getCurrTimeToString()  + " : " + _customers.get(i).getName() + " " + _customers.get(i).getCurrState().toString());
-					List<Products> returningProducts = _customers.get(i).returnAllProducts();
+					List<Pair<Product, Float>> returningProducts = _customers.get(i).returnAllProducts();
 					_productProcessor.addProducts(returningProducts);
 					_customers.remove(i);
 				} else if (_customers.get(i).getCurrState() == StatesInSupermarket.WANT_TO_STAY_IN_QUEUE) {
-					System.out.println(_timer.getCurrTimeToString()  + " : " + _customers.get(i).getName() + " " + _customers.get(i).getCurrState().toString());
-					_queueProcessor.addCustomer(_customers.remove(i));
+					_cashDesk.addCustomer(_customers.remove(i));
 				}
 			}
 
-			if (!_queueProcessor.isQueueEmpty()) {
-				_cashDesk.serveCustomer(_queueProcessor.popCustomer());
-				System.out.println(_timer.getCurrTimeToString()  + " : SERVED");
+			if (!_cashDesk.isQueueEmpty()) {
+				List<Pair<Product, Float>> returningProducts = _cashDesk.serveCustomer(_cashDesk.popCustomer());
+				_productProcessor.addProducts(returningProducts);
 			}
 
 			_timer.increaseTime();

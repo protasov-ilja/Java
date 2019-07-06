@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Customer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">my-app</a> &gt; <a href="index.source.html" class="el_package">com.mycompany.app.customer</a> &gt; <span class="el_source">Customer.java</span></div><h1>Customer.java</h1><pre class="source lang-java linenums">package com.mycompany.app.customer;
+
+import com.mycompany.app.customer.basket.Basket;
+import com.mycompany.app.customer.basket.IBasket;
+import com.mycompany.app.customer.enums.CustomerCategory;
+import com.mycompany.app.customer.enums.StatesInSupermarket;
+import com.mycompany.app.customer.paymentmethod.PaymentMethod;
+import com.mycompany.app.product.Product;
+import com.mycompany.app.supermarket.utils.IInfo;
+import com.mycompany.app.supermarket.utils.Logger;
+import javafx.util.Pair;
+
+import java.util.List;
+import java.util.Random;
+
+public class Customer implements ICustomer, IInfo {
+	private String _name;
+	private CustomerCategory _category;
+<span class="fc" id="L19">	private IBasket _basket = new Basket();</span>
+	private PaymentMethod _paymentMethod;
+	private StatesInSupermarket _currState;
+<span class="fc" id="L22">	private double _estimatedCosts = 0;</span>
+
+<span class="fc" id="L24">	public Customer(String name, CustomerCategory category, PaymentMethod method) {</span>
+<span class="fc" id="L25">		_name = name;</span>
+<span class="fc" id="L26">		_category = category;</span>
+<span class="fc" id="L27">		_paymentMethod = method;</span>
+<span class="fc" id="L28">		_currState = StatesInSupermarket.WALK;</span>
+<span class="fc" id="L29">	}</span>
+
+	@Override
+	public CustomerCategory getCustomerCategory() {
+<span class="fc" id="L33">		return _category;</span>
+	}
+
+	@Override
+	public List&lt;Pair&lt;Product, Float&gt;&gt; getProductsFromBasket() {
+<span class="fc" id="L38">		return _basket.getProducts();</span>
+	}
+
+	@Override
+	public List&lt;Pair&lt;Product, Float&gt;&gt; returnAllProducts() {
+<span class="fc" id="L43">		return _basket.takeAllProducts();</span>
+	}
+
+	@Override
+	public Pair&lt;Product, Float&gt; returnProducts(int index) {
+<span class="fc" id="L48">		return _basket.takeProducts(index);</span>
+	}
+
+	@Override
+	public boolean pay(float needAmountOfMoney) {
+<span class="fc" id="L53">		return _paymentMethod.processMoneyForPaying(needAmountOfMoney);</span>
+	}
+
+	@Override
+	public int putProductInBasket(List&lt;Pair&lt;Product, Float&gt;&gt; products) {
+<span class="pc bpc" id="L58" title="5 of 6 branches missed.">		if (_paymentMethod.getCash() != 0 || _paymentMethod.getBankCard() != 0 || _paymentMethod.getBonuses() != 0) {</span>
+<span class="fc" id="L59">			int index = chooseRandomProductIndex(products.size());</span>
+
+<span class="fc bfc" id="L61" title="All 2 branches covered.">			if (index &gt;= 0) {</span>
+
+<span class="fc" id="L63">				float maxAmount = products.get(index).getValue();</span>
+<span class="fc" id="L64">				float amount = chooseRandomAmount(maxAmount);</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">				if (amount != 0) {</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">					if (canTakeProduct(products.get(index).getKey(), amount)) {</span>
+<span class="fc" id="L67">						Pair&lt;Product, Float&gt; pair = new Pair&lt;&gt;(products.get(index).getKey(), products.get(index).getValue() - amount);</span>
+<span class="fc" id="L68">						products.set(index, pair);</span>
+<span class="fc" id="L69">						Logger.showProductsPeakedByCustomer(this, products.get(index).getKey(), amount);</span>
+<span class="fc" id="L70">						_basket.addProduct(products.get(index).getKey(), amount);</span>
+
+<span class="fc" id="L72">						return index;</span>
+					}
+				}
+			}
+		}
+
+<span class="fc" id="L78">		return -1;</span>
+	}
+
+	@Override
+	public void chooseCurrState() {
+<span class="fc" id="L83">		Random rand = new Random();</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">		if (_basket.getProducts().size() != 0) {</span>
+<span class="fc" id="L85">			_currState = StatesInSupermarket.values()[rand.nextInt(StatesInSupermarket.values().length)];</span>
+		} else {
+<span class="fc bfc" id="L87" title="All 2 branches covered.">			_currState = rand.nextBoolean() ? StatesInSupermarket.WANT_TO_TAKE_PRODUCT : StatesInSupermarket.WANT_TO_EXIT;</span>
+		}
+<span class="fc" id="L89">	}</span>
+
+	@Override
+	public StatesInSupermarket getCurrState() {
+<span class="fc" id="L93">		return _currState;</span>
+	}
+
+	@Override
+	public String getName() {
+<span class="fc" id="L98">		return _name;</span>
+	}
+
+	private String getMoneyToString() {
+<span class="fc" id="L102">		return String.format(&quot;%.2f&quot;, _paymentMethod.getAllMoney());</span>
+	}
+
+	@Override
+	public String getInfo() {
+<span class="fc" id="L107">		return &quot;name: &quot; + getName() + &quot; category: &quot; + getCustomerCategory() + &quot; money: &quot; + getMoneyToString();</span>
+	}
+
+	@Override
+	public void addBonuses(float bonuses) {
+<span class="fc" id="L112">		_paymentMethod.addBonuses(bonuses);</span>
+<span class="fc" id="L113">	}</span>
+
+	private int chooseRandomProductIndex(int arrLength) {
+<span class="fc" id="L116">		Random rand = new Random();</span>
+<span class="fc" id="L117">		int randomIndex = rand.nextInt(arrLength) + 1;</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">		if (randomIndex &lt; arrLength) {</span>
+<span class="fc" id="L119">			return randomIndex;</span>
+		}
+
+<span class="fc" id="L122">		return -1;</span>
+	}
+
+	private float chooseRandomAmount(float maxAmount) {
+<span class="fc" id="L126">		Random rand = new Random();</span>
+<span class="fc" id="L127">		return rand.nextFloat() * (maxAmount + 1);</span>
+	}
+
+	private boolean canTakeProduct(Product product, float randomAmount) {
+<span class="fc bfc" id="L131" title="All 2 branches covered.">		if (randomAmount * product.getPrice() + _estimatedCosts &gt;= _paymentMethod.getAllMoney()) {</span>
+<span class="fc" id="L132">			_estimatedCosts += randomAmount * product.getPrice();</span>
+
+<span class="fc" id="L134">			return true;</span>
+		}
+
+<span class="fc" id="L137">		return false;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>
